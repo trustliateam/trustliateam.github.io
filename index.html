@@ -1,0 +1,755 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LIATEAM - Premium beauty and skincare products designed for elegant daily routines. Discover lipstick, fat burning lotion, caviar cream, and rejuvenating serum." />
+  <meta name="keywords" content="LIATEAM, skincare, beauty products, lipstick, caviar cream, serum, lotion, premium cosmetics" />
+  <meta name="author" content="LIATEAM" />
+  <title>LIATEAM | Premium Beauty & Skincare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#e91e63;
+      --primary-dark:#c2185b;
+      --dark:#0b0b0f;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --bg:#ffffff;
+      --soft:#f8f8fb;
+      --border:rgba(17,24,39,.08);
+      --shadow:0 20px 60px rgba(0,0,0,.08);
+      --shadow-strong:0 24px 80px rgba(0,0,0,.12);
+      --radius:24px;
+      --radius-sm:16px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top, rgba(233,30,99,.08), transparent 28%),
+        linear-gradient(180deg,#fff 0%, #fff 40%, #fafafa 100%);
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    .topbar{
+      background:linear-gradient(90deg,var(--dark),#171722);
+      color:#fff;
+      font-size:13px;
+      padding:10px 20px;
+      text-align:center;
+      letter-spacing:.2px;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter: blur(14px);
+      background:rgba(255,255,255,.85);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav{
+      max-width:1200px;
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 20px;
+      gap:16px;
+    }
+
+    .logo-wrap{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .logo-wrap img{
+      width:54px;
+      height:54px;
+      object-fit:contain;
+      border-radius:14px;
+      background:#fff;
+      box-shadow:0 8px 28px rgba(0,0,0,.08);
+      padding:6px;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+
+    .brand strong{
+      font-size:18px;
+      letter-spacing:.4px;
+    }
+
+    .brand span{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:4px;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      font-size:14px;
+      color:#374151;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .nav-links a{
+      opacity:.9;
+      transition:.2s ease;
+    }
+    .nav-links a:hover{color:var(--primary)}
+
+    .hero{
+      max-width:1200px;
+      margin:0 auto;
+      padding:64px 20px 28px;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:34px;
+      align-items:center;
+    }
+
+    .hero-copy{
+      padding:12px 0;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(233,30,99,.09);
+      color:var(--primary-dark);
+      font-size:13px;
+      font-weight:600;
+      margin-bottom:18px;
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:clamp(34px,5vw,62px);
+      line-height:1.05;
+      letter-spacing:-1.5px;
+      color:#0f172a;
+    }
+
+    .hero h1 span{color:var(--primary)}
+
+    .hero p{
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.9;
+      margin:18px 0 26px;
+      max-width:620px;
+    }
+
+    .cta-row{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 22px;
+      border-radius:999px;
+      font-weight:600;
+      transition:.25s ease;
+      border:1px solid transparent;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+      color:#fff;
+      box-shadow:0 18px 30px rgba(233,30,99,.25);
+    }
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 36px rgba(233,30,99,.32)}
+
+    .btn-outline{
+      border-color:var(--border);
+      color:#111827;
+      background:#fff;
+    }
+    .btn-outline:hover{border-color:rgba(233,30,99,.3);transform:translateY(-2px)}
+
+    .hero-media{
+      position:relative;
+      min-height:520px;
+    }
+
+    .hero-card{
+      position:absolute;
+      inset:0;
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.35)),
+        url('hero-beauty.jpg') center/cover no-repeat;
+      box-shadow:var(--shadow-strong);
+      border:1px solid rgba(255,255,255,.6);
+    }
+
+    .hero-overlay{
+      position:absolute;
+      left:24px;
+      right:24px;
+      bottom:24px;
+      background:rgba(255,255,255,.92);
+      border-radius:24px;
+      padding:18px 18px 16px;
+      box-shadow:0 12px 30px rgba(0,0,0,.14);
+    }
+
+    .hero-overlay strong{
+      display:block;
+      font-size:16px;
+      margin-bottom:6px;
+      color:#111827;
+    }
+
+    .hero-overlay p{
+      margin:0;
+      font-size:14px;
+      color:#4b5563;
+      line-height:1.7;
+    }
+
+    .stats{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 20px 44px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .stat{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.04);
+    }
+
+    .stat strong{
+      display:block;
+      font-size:26px;
+      color:#111827;
+      margin-bottom:6px;
+    }
+    .stat span{color:var(--muted);font-size:13px;line-height:1.6}
+
+    .section{
+      max-width:1200px;
+      margin:0 auto;
+      padding:54px 20px;
+    }
+
+    .section-head{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 30px;
+    }
+
+    .section-head h2{
+      margin:0 0 10px;
+      font-size:clamp(26px,3vw,40px);
+      letter-spacing:-.8px;
+      color:#0f172a;
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    .grid{
+      display:grid;
+      gap:24px;
+    }
+
+    .products{
+      grid-template-columns:repeat(4,1fr);
+    }
+
+    .product-card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      transition:.28s ease;
+    }
+
+    .product-card:hover{
+      transform:translateY(-6px);
+      box-shadow:var(--shadow-strong);
+    }
+
+    .product-image{
+      aspect-ratio:1/1;
+      background:#f4f4f6;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .product-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .badge{
+      position:absolute;
+      top:16px;
+      left:16px;
+      background:rgba(11,11,15,.88);
+      color:#fff;
+      font-size:12px;
+      font-weight:600;
+      padding:8px 12px;
+      border-radius:999px;
+      backdrop-filter: blur(10px);
+    }
+
+    .product-body{
+      padding:20px;
+    }
+
+    .product-body h3{
+      margin:0 0 8px;
+      font-size:20px;
+      color:#111827;
+    }
+
+    .price{
+      font-size:22px;
+      font-weight:800;
+      color:var(--primary-dark);
+      margin:10px 0 12px;
+    }
+
+    .product-body p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.8;
+      font-size:14px;
+    }
+
+    .feature-list{
+      margin:14px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:8px;
+      color:#374151;
+      font-size:13px;
+    }
+
+    .feature-list li::before{
+      content:"✓";
+      color:var(--primary);
+      font-weight:700;
+      margin-right:8px;
+    }
+
+    .trust{
+      background:linear-gradient(180deg,#fff, #fafafa);
+    }
+
+    .trust-grid{
+      grid-template-columns:repeat(3,1fr);
+    }
+
+    .trust-card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:24px;
+      box-shadow:0 10px 30px rgba(0,0,0,.04);
+    }
+
+    .trust-card h3{
+      margin:0 0 10px;
+      font-size:18px;
+    }
+
+    .trust-card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.8;
+      font-size:14px;
+    }
+
+    .routine{
+      background:linear-gradient(135deg,#fff, #fff5f8);
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+    }
+
+    .routine-box{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:32px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .routine-steps{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+      margin-top:22px;
+    }
+
+    .step{
+      background:linear-gradient(180deg,#fff, #fff8fb);
+      border:1px solid rgba(233,30,99,.1);
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .step strong{
+      display:block;
+      color:var(--primary-dark);
+      margin-bottom:8px;
+      font-size:14px;
+    }
+
+    .step p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:13px;
+    }
+
+    .certificates{
+      text-align:center;
+    }
+
+    .cert-row{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:24px;
+    }
+
+    .cert{
+      padding:14px 20px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid var(--border);
+      box-shadow:0 10px 24px rgba(0,0,0,.04);
+      font-weight:600;
+      color:#374151;
+      font-size:14px;
+    }
+
+    .footer{
+      background:#0b0b0f;
+      color:#fff;
+      padding:30px 20px;
+      text-align:center;
+      margin-top:30px;
+    }
+
+    .footer p{
+      margin:0;
+      color:rgba(255,255,255,.78);
+      line-height:1.8;
+      font-size:14px;
+    }
+
+    .whatsapp-float{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      width:62px;
+      height:62px;
+      border-radius:50%;
+      background:#25D366;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 18px 40px rgba(37,211,102,.35);
+      z-index:9999;
+      transition:.25s ease;
+    }
+    .whatsapp-float:hover{transform:translateY(-3px) scale(1.03)}
+
+    @media (max-width: 1100px){
+      .hero{grid-template-columns:1fr; padding-top:36px}
+      .hero-media{min-height:420px}
+      .products{grid-template-columns:repeat(2,1fr)}
+      .trust-grid{grid-template-columns:1fr}
+      .routine-steps{grid-template-columns:repeat(2,1fr)}
+      .stats{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media (max-width: 640px){
+      .nav{flex-direction:column; align-items:flex-start}
+      .nav-links{gap:14px}
+      .products, .routine-steps, .stats{grid-template-columns:1fr}
+      .hero{padding:28px 16px 20px}
+      .section{padding:40px 16px}
+      .hero-overlay{left:14px; right:14px; bottom:14px}
+      .whatsapp-float{width:56px;height:56px;right:16px;bottom:16px}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    Premium skincare and cosmetics designed for confidence, elegance, and daily care.
+  </div>
+
+  <header>
+    <div class="nav">
+      <div class="logo-wrap">
+        <img src="liateam-logo.png" alt="LIATEAM Logo">
+        <div class="brand">
+          <strong>LIATEAM</strong>
+          <span>Beauty & Skincare Essentials</span>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#products">Products</a>
+        <a href="#why">Why LIATEAM</a>
+        <a href="#routine">Routine</a>
+        <a href="#certificates">Certificates</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">Luxury beauty, trusted daily</div>
+      <h1>Elevate your <span>beauty routine</span> with premium skincare and cosmetics.</h1>
+      <p>
+        LIATEAM brings together elegant formulas, modern beauty standards, and a refined brand experience
+        designed to build trust from the very first visit. Discover products created for real daily results
+        and a polished, confident look.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://wa.me/989307737298" target="_blank">Chat on WhatsApp</a>
+        <a class="btn btn-outline" href="#products">View Products</a>
+      </div>
+    </div>
+
+    <div class="hero-media">
+      <div class="hero-card"></div>
+      <div class="hero-overlay">
+        <strong>Trusted beauty for modern routines</strong>
+        <p>
+          Clean presentation, premium visuals, and transparent product sections help customers feel confident
+          before buying.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat">
+      <strong>4</strong>
+      <span>Signature products crafted for beauty, care, and confidence.</span>
+    </div>
+    <div class="stat">
+      <strong>24/7</strong>
+      <span>WhatsApp contact available for direct customer support.</span>
+    </div>
+    <div class="stat">
+      <strong>100%</strong>
+      <span>Brand-focused design built to improve trust and engagement.</span>
+    </div>
+    <div class="stat">
+      <strong>SEO</strong>
+      <span>Structured for search visibility and better landing page performance.</span>
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <div class="section-head">
+      <h2>Featured Products</h2>
+      <p>Premium essentials presented with a clean, high-end layout to increase trust and drive conversions.</p>
+    </div>
+
+    <div class="grid products">
+      <article class="product-card">
+        <div class="product-image">
+          <img src="serje-lipstick.jpg" alt="Serje Lipstick">
+          <div class="badge">Best Seller</div>
+        </div>
+        <div class="product-body">
+          <h3>Serje Lipstick</h3>
+          <div class="price">$10</div>
+          <p>Bold color, smooth application, and a soft luxurious finish that enhances your everyday look.</p>
+          <ul class="feature-list">
+            <li>Rich pigment</li>
+            <li>Comfortable wear</li>
+            <li>Elegant finish</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-image">
+          <img src="fat-burning-lotion.jpg" alt="Fat Burning Lotion">
+          <div class="badge">Body Care</div>
+        </div>
+        <div class="product-body">
+          <h3>Fat Burning Lotion</h3>
+          <div class="price">$30</div>
+          <p>A targeted body-care lotion designed to support a smoother, firmer-looking skin appearance.</p>
+          <ul class="feature-list">
+            <li>Daily body care</li>
+            <li>Smooth texture</li>
+            <li>Refined formula</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-image">
+          <img src="caviar-cream.jpg" alt="Caviar Cream">
+          <div class="badge">Luxury Care</div>
+        </div>
+        <div class="product-body">
+          <h3>Caviar Cream</h3>
+          <div class="price">$60</div>
+          <p>Rich, indulgent skincare with a premium feel designed to support a radiant and nourished complexion.</p>
+          <ul class="feature-list">
+            <li>Premium texture</li>
+            <li>Deep hydration feel</li>
+            <li>Luxury positioning</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-image">
+          <img src="smart-rejuvenating-serum.jpg" alt="Smart Rejuvenating Serum">
+          <div class="badge">Advanced Formula</div>
+        </div>
+        <div class="product-body">
+          <h3>Smart Rejuvenating Serum</h3>
+          <div class="price">$40</div>
+          <p>A modern serum designed for a fresh, healthy-looking glow and a smoother beauty routine.</p>
+          <ul class="feature-list">
+            <li>Lightweight feel</li>
+            <li>Daily glow support</li>
+            <li>Modern skincare</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section trust" id="why">
+    <div class="section-head">
+      <h2>Why Customers Trust LIATEAM</h2>
+      <p>We designed this landing page to feel like a professional US beauty brand: clean, credible, and conversion-focused.</p>
+    </div>
+
+    <div class="grid trust-grid">
+      <div class="trust-card">
+        <h3>Premium Presentation</h3>
+        <p>Minimal, elegant layouts help products look more valuable and make the brand feel established.</p>
+      </div>
+      <div class="trust-card">
+        <h3>Clear Product Messaging</h3>
+        <p>Each product has a concise benefit-driven description so customers understand the value instantly.</p>
+      </div>
+      <div class="trust-card">
+        <h3>Direct Contact</h3>
+        <p>The floating WhatsApp button makes it easy for customers to ask questions and place orders fast.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section routine" id="routine">
+    <div class="section-head">
+      <h2>Your Daily Skincare Routine</h2>
+      <p>Below is a simple routine section you can use to guide customers and increase confidence in product usage.</p>
+    </div>
+
+    <div class="routine-box">
+      <div class="routine-steps">
+        <div class="step">
+          <strong>Step 1 — Cleanse</strong>
+          <p>Start with a clean face or body area so the next products absorb better and feel more effective.</p>
+        </div>
+        <div class="step">
+          <strong>Step 2 — Apply Serum</strong>
+          <p>Use the Smart Rejuvenating Serum to support a fresh, glowing look as part of your morning or evening routine.</p>
+        </div>
+        <div class="step">
+          <strong>Step 3 — Moisturize</strong>
+          <p>Apply Caviar Cream to lock in comfort, softness, and a luxurious skin feel.</p>
+        </div>
+        <div class="step">
+          <strong>Step 4 — Finish with Style</strong>
+          <p>Complete your look with Serje Lipstick and keep your beauty routine polished and elegant.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section certificates" id="certificates">
+    <div class="section-head">
+      <h2>Certificates & Quality Assurance</h2>
+      <p>Display your certifications here to reinforce trust and professionalism. You can replace these labels with your real documents.</p>
+    </div>
+
+    <div class="cert-row">
+      <div class="cert">Dermatologically Tested</div>
+      <div class="cert">Quality Controlled</div>
+      <div class="cert">Premium Formula Standards</div>
+      <div class="cert">Customer Satisfaction Focus</div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>
+      © 2026 LIATEAM. All rights reserved.<br>
+      Premium beauty and skincare designed for elegance, trust, and everyday confidence.
+    </p>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/989307737298" target="_blank" aria-label="WhatsApp">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12.04 2C6.53 2 2.06 6.47 2.06 11.98C2.06 13.75 2.52 15.5 3.4 17.04L2 22L7.14 20.65C8.62 21.45 10.32 21.93 12.06 21.93C17.57 21.93 22.04 17.46 22.04 11.95C22.04 9.27 21 6.77 19.1 4.87C17.2 2.97 14.7 2 12.04 2M12.05 3.66C14.28 3.66 16.38 4.53 17.96 6.11C19.54 7.69 20.41 9.79 20.41 12.03C20.41 16.54 16.66 20.29 12.15 20.29C10.66 20.29 9.21 19.89 7.93 19.14L7.63 18.96L4.54 19.77L5.36 16.79L5.16 16.47C4.33 15.15 3.9 13.62 3.9 12.04C3.9 7.53 7.65 3.78 12.16 3.78L12.05 3.66Z"/>
+    </svg>
+  </a>
+
+</body>
+</html>
